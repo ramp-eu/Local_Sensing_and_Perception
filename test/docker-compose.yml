@@ -1,0 +1,40 @@
+services: 
+  ran: 
+    image: "l4ms/opil.iot.ran:3.1.1"
+    environment: 
+      - "ROS_MASTER_URI=http://localhost:11311"
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./ran/mod_iot_ran/launch/mod_iot_ran_no_fakelocalization.launch:/catkin_ws/src/mod_iot_ran/launch/mod_iot_ran.launch 
+      - ./localsp/demo.png:/catkin_ws/src/mars_simulation_bringup/mars_simulation_data/world/opil_finnland.png 
+      - ./ran/opil_finnland.world:/catkin_ws/src/mars_simulation_bringup/mars_simulation_data/world/opil_finnland.world 
+      - ./ran/opil_finnland_simulation_no_mapserver.launch:/catkin_ws/src/mars_simulation_bringup/mars_simulation/launch/opil_finnland_simulation.launch
+    ports: 
+      - "39000:39000"
+
+#S&P
+  splocal:
+    restart: always
+#    image: l4ms/opil.iot.sp.local:3.0.6-beta
+    image: localsp:ide
+    volumes:
+            #- path on the host : path inside the container
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./localsp/demo.yaml:/map.yaml:ro
+      - ./localsp/demo.png:/map.png:ro
+      - ./localsp/amcltestmap.launch:/amcl_map.launch:ro
+      - ./localsp/local_robot.launch:/local_robot.launch:ro
+      - ./localsp/robotslocalsp.json:/robots.json:ro
+      - ./localsp/whitelistlocalsp.json:/whitelist.json:ro
+    environment:
+      - ROS_MASTER_URI=http://ran:11311
+      - ROS_IP=splocal
+      - FIWAREHOST=161.53.68.89
+      - HOST=161.53.68.89
+      - DISPLAY=$DISPLAY
+      - SIMULATION=false
+    ports: 
+      - "39003:39003"
+      
+version: "3.5"

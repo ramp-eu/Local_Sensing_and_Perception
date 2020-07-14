@@ -1,0 +1,22 @@
+image: ros:melodic-ros-core
+
+cache:
+  paths:
+    - ccache/
+
+before_script:
+  - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.cc-asp.fraunhofer.de/".insteadOf "git@gitlab.cc-asp.fraunhofer.de:"
+  - git clone git@gitlab.cc-asp.fraunhofer.de:iml/oe130/ROS/ROS-MARS/ros_gitlab_ci.git
+  - source ros_gitlab_ci/gitlab-ci.bash >/dev/null
+  - git clone git@gitlab.cc-asp.fraunhofer.de:iml/oe130/ROS/ROS-MARS/mars_common_msgs.git
+  - git clone git@gitlab.cc-asp.fraunhofer.de:iml/oe130/ROS/ROS-MARS/Physical-Agents/mars_agent_physical_robot_msgs.git
+
+catkin tools:
+  stage: build
+  script:
+    - cp -r mars_common_msgs src/
+    - cp -r mars_agent_physical_robot_msgs src/
+    - rosdep install --from-paths src --ignore-src -r -y
+    - catkin build --summarize --no-status --force-color
+  tags:
+    - asprunner
