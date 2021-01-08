@@ -1,6 +1,6 @@
 # localization and mapping metapackage
 
-A ROS metapackage containing packages for localization and mapping developed in the purposes of the L4MF project. 
+A ROS metapackage containing packages for localization and mapping developed in the purposes of the L4MS project. 
 
 For required install instructions, please refer to individual package READMEs.
 
@@ -11,16 +11,6 @@ For required install instructions, please refer to individual package READMEs.
 ## lam_simulator
 
 ROS package which demonstrantes localization and mapping in Stage simulator. Relies on AMCL, gmapping and Stage simulator.
-
-
-## andymark_driver
-
-ROS drivers for omnidirectional andymark platform. Teleoperation and control relies on the nodes provided by the husky package
-
-
-## husky
-
-ROS package for interfacing with Clearpath Husky robot. It also includes nodes for teleoperation and control.
 
 
 ## odometry_correction

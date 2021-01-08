@@ -30,19 +30,8 @@ class pubOdomWithCovariance {
         posePub = n.advertise<geometry_msgs::PoseWithCovarianceStamped>("/robot_"+ss.str()+"/pose_channel", 1);
         
         refreshCovariance = n.subscribe(amcl_topic,1, &pubOdomWithCovariance::refreshCovarianceCallback, this);
-//        poseSub = n.subscribe("/odom",1, &pubOdomWithCovariance::refreshPoseCallback, this);
     }
     
-    void refreshPoseCallback(const nav_msgs::Odometry &msg) {
-    
-        this->PoseWCS.header = msg.header;
-        this->PoseWCS.header.frame_id = map_frame;
-//        this->PoseWCS.pose.pose.position.x = transform.getOrigin().x();;
-//        this->PoseWCS.pose.pose.position.y = transform.getOrigin().y();
-        this->PoseWCS.pose.pose.position.z = 0;
-//        this->PoseWCS.pose.pose.orientation = tf::createQuaternionMsgFromYaw(yaw);
-//        posePub.publish(this->PoseWCS);
-    }
     
     void refreshCovarianceCallback(const geometry_msgs::PoseWithCovarianceStamped &msg) {
         this->PoseWCS.pose.covariance = msg.pose.covariance;
@@ -71,7 +60,7 @@ int main(int argc, char **argv) {
   pubOdomWithCovariance publishOdometryWithCovariance;
   tf::TransformListener tf_listener;
   tf::StampedTransform transform;
-  double yaw, pitch, roll, tfx, tfy;
+  double yaw, pitch, roll;
   tf_listener.waitForTransform(map_frame, base_frame, ros::Time::now(), ros::Duration(3.0));
 
   ros::Rate rate(10.0);

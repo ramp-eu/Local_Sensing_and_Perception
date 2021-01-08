@@ -17,7 +17,7 @@ services:
   splocal:
     restart: always
     image: docker.ramp.eu/opil/opil.iot.sp.local:3.1.1
-#    image: localsp:idemo
+#    image: localsp:test
     volumes:
             #- path on the host : path inside the container
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
