@@ -3,7 +3,7 @@ set -e
 
 echo SP Local : OPIL version 3 is now running
 # firos setup
-sed -e "s/LOCALHOST/$HOST/g" -e "s/FIWAREHOST/$FIWAREHOST/g" /root/catkin_ws/src/firos/config/config.json.template > /root/catkin_ws/src/firos/config/config.json
+sed -e "s/LOCALHOST/$HOST/g" -e "s/FIWAREHOST/$FIWAREHOST/g" /catkin_ws/src/firos/config/config.json.template > /catkin_ws/src/firos/config/config.json
 
 if [ $SIMULATION == true ]
         then 
@@ -22,38 +22,38 @@ fi
 
 # setup ros environment
 source "/opt/ros/$ROS_DISTRO/setup.bash"
-source "/root/catkin_ws/devel/setup.sh"
+source "/catkin_ws/devel/setup.sh"
 
 FILEROBOTS=/robots.json
 if test -f "$FILEROBOTS"; then
-	cp robots.json /root/catkin_ws/src/firos/config/
+	cp robots.json /catkin_ws/src/firos/config/
 fi
 FILEWHITELIST=/whitelist.json
 if test -f "$FILEWHITELIST"; then
-	cp whitelist.json /root/catkin_ws/src/firos/config/
+	cp whitelist.json /catkin_ws/src/firos/config/
 fi
 FILEAMCL=/amcl_map.launch
 if test -f "$FILEAMCL"; then
-	cp amcl_map.launch /root/catkin_ws/src/localization_and_mapping/lam_simulator/launch/
+	cp amcl_map.launch /catkin_ws/src/localization_and_mapping/lam_simulator/launch/
 fi
 FILEWORLD=/map.world
 if test -f "$FILEWORLD"; then
-	cp map.world /root/catkin_ws/src/localization_and_mapping/lam_simulator/yaml/
+	cp map.world /catkin_ws/src/localization_and_mapping/lam_simulator/yaml/
 fi
 FILEROBOTSIM=/local_robot_sim.launch
 if test -f "$FILEROBOTSIM"; then
-	cp local_robot_sim.launch /root/catkin_ws/src/localization_and_mapping/sensing_and_perception/
+	cp local_robot_sim.launch /catkin_ws/src/localization_and_mapping/sensing_and_perception/
 fi
 FILEROBOT=/local_robot.launch
 if test -f "$FILEROBOT"; then
-	cp local_robot.launch /root/catkin_ws/src/localization_and_mapping/sensing_and_perception/
+	cp local_robot.launch /catkin_ws/src/localization_and_mapping/sensing_and_perception/
 fi
 FILEPNG=/map.png
 FILEYML=/map.yaml
 if test -f "$FILEPNG"; then
-	cp map.png /root/catkin_ws/src/localization_and_mapping/lam_simulator/yaml/
+	cp map.png /catkin_ws/src/localization_and_mapping/lam_simulator/yaml/
 	if test -f "$FILEYML"; then
-		cp map.yaml /root/catkin_ws/src/localization_and_mapping/lam_simulator/yaml/
+		cp map.yaml /catkin_ws/src/localization_and_mapping/lam_simulator/yaml/
 		if [ $SIMULATION == true ]
 				then 
 				        echo "with simulator Stage"

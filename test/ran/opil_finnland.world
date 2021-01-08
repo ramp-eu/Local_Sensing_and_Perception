@@ -24,15 +24,19 @@ define map model
 map
 (
   name "opil_finnland"
-  size [26.891  15.126 1.000]
-  pose [ 3.53 1.443 0.000 0.000 ] 
+  size [29.4  21.168 1.000]
+  #size is calculated form pixels times resolution: 1500*0.0196, 1080*0.0196 
+  pose [ 1.8146 3.0952 0.000 0.000 ] 
+  # origin is calculated as 
+  #x= (x of size of the floorplan)/2 + (x of origin in floorplan.yaml) = 29.4/2 -12.8854 = 1.8146
+#y= (y of size of the floorplan)/2 + (y of origin in floorplan.yaml) = 21.168/2 -7.4888 = 3.0952
 #  pose [0.000 0.000 0.000 0.000]
   bitmap "opil_finnland.png"
 )
 
 # robots added here automatically
 multishuttle( pose [ -200 -200 0.000 0.000 ] name "robot_0" color "white") # don't change this robot!
-multishuttle( pose [ -8.916 -5.12 0.000 0.000 ] name "robot_0" color "yellow")
+multishuttle( pose [ 1.0 0.5 0.000 0.000 ] name "robot_0" color "yellow")
 
 define box model
 (

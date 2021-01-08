@@ -6,5 +6,5 @@ Innovation Centre Nikola Tesla, written by Marija from May 6th 2018, contintribu
 This is the local SP. The docker image is created by executing in the root folder of this package:
 
 ```
-docker build -t "localsp:ide" -f docker/localSPdocker/Dockerfile .
+docker build -t "localsp:test" -f docker/localSPdocker/Dockerfile .
 ```

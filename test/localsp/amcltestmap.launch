@@ -44,8 +44,8 @@ uncomment this and comment line beneath for amcl localization
   <param name="transform_tolerance" value="0.1"/>
   <param name="recovery_alpha_slow" value="0.0"/>
   <param name="recovery_alpha_fast" value="0.0"/>
-  <param name="initial_pose_x" value="-8.916"/> 
-  <param name="initial_pose_y" value="-5.12"/>  
+  <param name="initial_pose_x" value="1."/> 
+  <param name="initial_pose_y" value="0.5"/>  
   <param name="initial_pose_a" value="0"/>
 </node>
 </launch>

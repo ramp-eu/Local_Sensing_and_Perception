@@ -1,8 +1,8 @@
 <launch>
   <arg name="robot_1_name" default="robot_1" />
 
-  <arg name="initial_pose_robot_1_x" default="-8.916"/>
-  <arg name="initial_pose_robot_1_y" default="-5.12"/>
+  <arg name="initial_pose_robot_1_x" default="1."/>
+  <arg name="initial_pose_robot_1_y" default="0.5"/>
   <arg name="initial_pose_robot_1_a" default="0.0"/>
 
   <arg name="robot_1_description" default="robot_description_default"/>

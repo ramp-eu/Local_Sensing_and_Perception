@@ -2,7 +2,7 @@
 
 <!--also IML but can be replaced to a new map-->
 <node name="map_server" pkg="map_server" type="map_server" args="$(find lam_simulator)/yaml/map.yaml" respawn="false" >
-<param name="frame_id" value="/map" />
+<param name="frame_id" value="map" />
 </node>
 <include file="$(find lam_simulator)/launch/amcl_map.launch" />
 
@@ -11,7 +11,7 @@
      <!-- Put args="1" if you are testing the robot with the id number 1 -->
      <node name="publishPoseWithCovariance" pkg="sensing_and_perception" type="pubPoseWithCovariance" output="screen" args="0">	
         <param name="amcl_topic" value="/amcl_pose" />
-        <param name="map_frame" value="/map" />
+        <param name="map_frame" value="map" />
         <param name="base_frame" value="/robot_1/base_link" />
     </node>
 
@@ -21,7 +21,7 @@
         <param name="cell_size" type="double" value="0.1" />
         <param name="laser_inverted" type="bool" value="0" />
         <param name="scan_topic" value="/robot_1/base_scan" />
-        <param name="map_frame" value="/map" />
+        <param name="map_frame" value="map" />
         <param name="map_service_name" value="/static_map" />
     </node>
 
