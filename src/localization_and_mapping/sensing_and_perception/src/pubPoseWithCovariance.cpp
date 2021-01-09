@@ -81,7 +81,7 @@ int main(int argc, char **argv) {
 				publishOdometryWithCovariance.PoseWCS.pose.pose.orientation = tf::createQuaternionMsgFromYaw(yaw);
 				publishOdometryWithCovariance.posePub.publish(publishOdometryWithCovariance.PoseWCS);
     }
-    catch (tf::TransformException ex) {
+    catch (tf::TransformException& ex) {
         ROS_INFO("Pose With Covariance: %s", ex.what());
     }
     
